@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: authors
+#
+#  id         :integer          not null, primary key
+#  first_name :string
+#  last_name  :string
+#  year       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+scott:
+  first_name: Scott
+  last_name: Fleming
+  year: 1900
+
+homer:
+  first_name: Homer
+  last_name: Simpson
+  year: 1988
