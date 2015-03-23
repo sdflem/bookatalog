@@ -12,9 +12,15 @@ class AuthorsController < ApplicationController
   def create
   	@author = Author.new(params.require(:author).permit(:first_name, :last_name, :year))
   	if @author.save
+      flash[:notice] = "User created!"
   		redirect_to author_url(@author)
   	else
-  		redirect_to authors_url
+      flash.now[:alert] = "Error(s) in form!"
+      @author.errors.full_messages.each do |message|
+        flash.now[:alert] += " "
+        flash.now[:alert] += message
+      end
+  		render 'new'
   	end
   end
 
@@ -29,9 +35,11 @@ class AuthorsController < ApplicationController
   def update
     @author = Author.find(params[:id])
     if @author.update(params.require(:author).permit(:first_name, :last_name, :year))
+      flash[:notice] = "User updated!"
       redirect_to author_url(@author)
     else
-      redirect_to authors_url
+      flash.now[:alert] = "Errors in form!"
+      render 'edit'
     end
   end
 

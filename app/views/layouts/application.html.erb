@@ -8,6 +8,17 @@
 </head>
 <body>
 
+<% if flash[:notice] %>
+  <hr>
+  <p><%= flash[:notice] %></p>
+  <hr>
+<% end %>
+<% if flash[:alert] %>
+  <hr>
+  <p>Error: <%= flash[:alert] %></p>
+  <hr>
+<% end %>
+
 <%= yield %>
 
 </body>
